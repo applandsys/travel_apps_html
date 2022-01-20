@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       	<!-- META TAG -->	
+		<meta charset="utf-8">
+        <meta http-equiv="Content-Security-Policy" 
+                content="default-src *; 
+              style-src * 'self' 'unsafe-inline' 'unsafe-eval'; 
+              script-src * 'self' 'unsafe-inline' 'unsafe-eval';">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+        	<!-- ONSEN UI -->
+		<link rel="stylesheet" href="onsen/css/onsenui.css">
+		<link rel="stylesheet" href="onsen/css/onsen-css-components.css">
+		<script src="onsen/js/onsenui.js"></script>		
+	<!-- JQUERY -->
+        <script src="jquery/dist/jquery.min.js"></script>
+        <link rel="stylesheet" href="css/mystyle.css">
+        <title>USA Tour Fair</title>
+		
+		<meta name="google-signin-client_id" content="146289303132-cg936t7s57gh0e9kb38eeavd806bpnqb.apps.googleusercontent.com">
+    </head>
+    <body>
+
+        <ons-page>
+            <ons-navigator id="appNavigator" animation="fade" var="navi" >
+                <ons-page>
+                    <ons-splitter>
+                      <ons-splitter-content id="content" page="authpage.html"></ons-splitter-content>
+                    </ons-splitter>
+                </ons-page>
+            </ons-navigator>
+        </ons-page>
+         
+        <template id="authpage.html">
+            <ons-page id="authpage">
+                <ons-row >
+                    <ons-col>
+                        <div class="carousel_wrapper">
+                            <ons-carousel fullscreen swipeable auto-scroll overscrollable id="carousel">
+                                <ons-carousel-item >
+                                  <div class="caraousel_item_wrapper" >
+                                        <img class="slider_image" src="./images/slider1.jpg">
+                                  </div>
+                                </ons-carousel-item>
+                                <ons-carousel-item >
+                                    <div class="caraousel_item_wrapper">
+                                          <img class="slider_image" src="./images/slider1.jpg">
+                                    </div>
+                                  </ons-carousel-item>
+                                  <ons-carousel-item >
+                                    <div class="caraousel_item_wrapper">
+                                          <img class="slider_image" src="./images/slider1.jpg">
+                                    </div>
+                                  </ons-carousel-item>
+                              </ons-carousel>
+                        </div>  
+                    </ons-col>
+                  </ons-row>
+
+                <ons-row>
+                    <ons-col>
+                        <div algin="center" class="logo_wrapper">
+                            <img algin="center" class="logo_image" src="./images/logo.png">
+                        </div>
+                    </ons-col>
+                </ons-row>
+
+                <ons-row>
+                    <ons-col>
+                        <div style="margin-top: 90px;" id="login_button">
+                            <div algin="center" class="" style="display: flex;
+                            justify-content: center;
+                            border-radius: 16px;
+                            border: 1px solid #ddd;
+                            padding: 18px;
+                            margin: 20px;
+                            background: #fff;
+                        ">
+                                <div>
+								
+								<div class="g-signin2" data-onsuccess="onSignIn"></div>
+								<hr/>
+                                    <img  style="margin-left: -50px;
+                                    position: absolute" src="./images/google_icon.png" width="30px"></div> 
+                                <div class="display-inline color-default-blue text-size-1p5"> Continue with Google </div>   
+                        
+                            </div>
+                        </div>
+                            
+                    </ons-col>
+                </ons-row>
+
+            </ons-page>
+        </template>
+
+
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="js/authpage.js"></script>
+        <script type="text/javascript" src="js/functions.js"></script>
+      
+    </body>
+</html>

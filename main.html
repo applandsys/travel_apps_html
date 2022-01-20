@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       	<!-- META TAG -->	
+		<meta charset="utf-8">
+        <meta http-equiv="Content-Security-Policy" 
+        content="default-src *; 
+                 style-src * 'self' 'unsafe-inline' 'unsafe-eval'; 
+                 script-src * 'self' 'unsafe-inline' 'unsafe-eval';">
+       
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+        	<!-- ONSEN UI -->
+		<link rel="stylesheet" href="onsen/css/onsenui.css">
+		<link rel="stylesheet" href="onsen/css/onsen-css-components.css">
+		<script src="onsen/js/onsenui.js"></script>		
+	<!-- JQUERY -->
+        <script src="jquery/dist/jquery.min.js"></script>
+        <link rel="stylesheet" href="css/mystyle.css">
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
+        <title>USA Tour Fair</title>
+
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    </head>
+    <body>
+
+        <ons-page>
+            <ons-navigator id="myNavigator" animation="fade" var="navi" >
+                <ons-page>
+                    <ons-splitter>
+                      <ons-splitter-content id="content" page="home.html"></ons-splitter-content>
+                    </ons-splitter>
+                    <ons-tabbar id="tabbar">
+                        <ons-tab page="home.html"  label="Home" icon="ion-ios-home, material:md-home" active></ons-tab>
+                        <ons-tab page="history.html" label="History" icon="ion-ios-menu, material:md-menu"></ons-tab>
+                        <ons-tab page="setting.html" label="Setting" icon="fa-cog"></ons-tab>
+                        <ons-tab label="Live Chat" icon="fa-sms"></ons-tab>
+                        <ons-tab onclick="notify()" label="Notice" icon="fa-bell"></ons-tab>  
+                    </ons-tabbar>
+                </ons-page>
+            </ons-navigator>
+        </ons-page>
+        
+         
+        <template id="home.html">
+            <ons-page id="home">
+                <ons-row>
+                    <ons-col>
+                        <div style="display: inline-flex;">
+                            <div algin="left" class="" style="margin: 20px;
+                           ;">
+                                <img src="./images/Avatar.png" style="    width: 70px;">
+                            </div>
+                            <div algin="center" class="" style="color: #1D3160;     margin-top: 38px;
+                            font-size: 0.7em;">
+                                <div>USA Tour Fair <br/> usatorufari@gmail.com </div>
+                            </div>
+                        </div>
+                    </ons-col>
+                    <ons-col>
+                        <div style="text-align: right;
+                        justify-content: right;
+                        float: right;
+                        margin-top: 39px;">
+                            <div algin="right" class="" style="display: flex;
+                            float: right;
+                            margin-right: 5px;">
+                            <div style="padding: 3px 8px 3px 8px; background-color: #1D3160; border-radius: 5px 0px 0px 5px; color: #fff; text-align: center; font-size: .8em">EN</div>
+                            <div style="padding: 3px 8px 3px 8px; background-color: #fff; border-radius: 0px 5px 5px 0px; color: #000; text-align: center;  font-size: .8em">বাংলা</div>
+                            </div>
+                        </div>
+                    </ons-col>
+                </ons-row>
+                <ons-row >
+                    <ons-col>
+                        <div class="carousel_wrapper_main">
+                            <ons-carousel fullscreen swipeable auto-scroll overscrollable id="carousel">
+                                <ons-carousel-item >
+                                  <div class="caraousel_item_wrapper">
+                                        <img class="slider_image" src="./images/slider2.png">
+                                  </div>
+                                </ons-carousel-item>
+                                <ons-carousel-item >
+                                    <div class="caraousel_item_wrapper">
+                                          <img class="slider_image" src="./images/slider2.png">
+                                    </div>
+                                  </ons-carousel-item>
+                                  <ons-carousel-item >
+                                    <div class="caraousel_item_wrapper">
+                                          <img class="slider_image" src="./images/slider2.png">
+                                    </div>
+                                  </ons-carousel-item>
+                              </ons-carousel>
+                        </div>  
+                    </ons-col>
+                  </ons-row>
+                <div style="padding: 10px;
+                margin: 27px;">  
+                    <ons-row align="center">
+                        
+                            <ons-col>
+                                <div  style="cursor : pointer;" algin="center" class="group_button" id="visa_section_button" onclick="gotoVisaSection()">
+                                    <img class="group_img" src="./images/Group 3.png" >
+                                </div>
+                            </ons-col>
+                            <ons-col>
+                                <div algin="center" class="group_button" onclick="gototourSection()">
+                                    <img class="group_img" src="./images/Group 4.png">
+                                </div>
+                            </ons-col>
+                            <ons-col>
+                                <div algin="center" class="group_button">
+                                    <img class="group_img" src="./images/Group 5.png">
+                                </div>
+                            </ons-col>
+                            <ons-col>
+                                <div algin="center" class="group_button">
+                                    <img class="group_img" src="./images/Group 6.png">
+                                </div>
+                            </ons-col>
+                    </ons-row>
+                </div>  
+
+                <ons-row >
+                    <ons-col>
+                        <div align="center">
+                            <button class="blue_big_btn" id="general_inquery_btn">General Inquiry</button>
+                        </div>
+                    </ons-col>
+                </ons-row>
+            </ons-page>
+        </template>
+
+              
+         
+        <template id="setting.html">
+            <ons-page id="setting">
+                <ons-row>
+                    <ons-col>
+                        <div style="display: inline-flex;">
+                            <div algin="left" class="" style="margin: 20px;
+                           ;">
+                                <img src="./images/Avatar.png" style="    width: 70px;">
+                            </div>
+                            <div algin="center" class="" style="color: #1D3160;     margin-top: 38px;
+                            font-size: 0.7em;">
+                                <div>USA Tour Fair <br/> usatorufari@gmail.com </div>
+                            </div>
+                        </div>
+                    </ons-col>
+                    <ons-col>
+                        <div style="text-align: right;
+                        justify-content: right;
+                        float: right;
+                        margin-top: 39px;">
+                            <div algin="right" class="" style="display: flex;
+                            float: right;
+                            margin-right: 5px;">
+                            <div style="padding: 3px 8px 3px 8px; background-color: #1D3160; border-radius: 5px 0px 0px 5px; color: #fff; text-align: center; font-size: .8em">EN</div>
+                            <div style="padding: 3px 8px 3px 8px; background-color: #fff; border-radius: 0px 5px 5px 0px; color: #000; text-align: center;  font-size: .8em">বাংলা</div>
+                            </div>
+                        </div>
+                    </ons-col>
+                </ons-row>
+                <br/>
+
+            <div class="flexbox-container">
+                <ons-row>
+                    <ons-col>
+                        <div align="center"><button onclick="gotoProfile()" class="blue_big_btn" id="account_information">Account Information</button></div>
+                    </ons-col>
+                </ons-row>
+                <br/>
+
+                <ons-row>
+                    <ons-col>
+                        <div align="center"><button onclick="gotoPrivacy()" class="blue_big_btn" id="privacy">Privacy Policy</button></div>
+                    </ons-col>
+                </ons-row>
+                <br/>
+                <ons-row>
+                    <ons-col>
+                        <div align="center"><button onclick="gotoTerms()" class="blue_big_btn" id="terms">Terms & Conditions</button></div>
+                    </ons-col>
+                </ons-row>
+                <br/>
+                <ons-row>
+                    <ons-col>
+                        <div align="center"><button onclick="gotoFaq()" class="blue_big_btn" id="faq">FAQ</button></div>
+                    </ons-col>
+                </ons-row>
+                <br/>
+                <ons-row>
+                    <ons-col>
+                        <div align="center"><button onclick="gotoAbout()" class="blue_big_btn" id="about">About</button></div>
+                    </ons-col>
+                </ons-row>
+
+                <br/>
+                <ons-row>
+                    <ons-col>
+                        <div align="center"><button class="red_big_button" id="logout">Logout</button></div>
+                    </ons-col>
+                </ons-row>
+            </div>
+
+            </ons-page>
+        </template>
+
+        <template id="visa_section.html">
+            <ons-page id="visa_section">
+
+                <ons-toolbar>
+                    <div class="left"><ons-back-button></ons-back-button></div>
+                    <div class="center toolbar_text" > Visa</div>
+                    <div class="right">
+                  </div>
+                </ons-toolbar>
+
+                <ons-row >
+                    <ons-col>
+                        <div align="center" class="gallery_container">
+                            <div class="gallery_item"> 
+                                 <ons-card><div><img onclick="gotoVisaProcess()" class="gallery_image" src="./images/Rectangle 26.png"></div><div align="center" class="name_text">Rectable 1</div></ons-card>
+                            </div>
+
+                            <div class="gallery_item"> 
+                                <ons-card><div><img onclick="gotoVisaProcess()" class="gallery_image" src="./images/Rectangle 24.png"></div><div align="center" class="name_text">Rectable 1</div></ons-card>
+                           </div>
+
+                            <div class="gallery_item"> 
+                                <ons-card><div><img onclick="gotoVisaProcess()" class="gallery_image" src="./images/Rectangle 26.png"></div><div align="center" class="name_text">Rectable 1</div></ons-card>
+                            </div>
+
+                            <div class="gallery_item"> 
+                                <ons-card><div><img onclick="gotoVisaProcess()" class="gallery_image" src="./images/Rectangle 28.png"></div><div align="center" class="name_text">Rectable 1</div></ons-card>
+                            </div>
+
+                            <div class="gallery_item"> 
+                                    <ons-card><div><img onclick="gotoVisaProcess()" class="gallery_image" src="./images/Rectangle 26.png"></div><div align="center" class="name_text">Rectable 1</div></ons-card>
+                            </div>
+                            <div class="gallery_item"> 
+                                <ons-card><div><img onclick="gotoVisaProcess()" class="gallery_image" src="./images/Rectangle 24.png"></div><div align="center" class="name_text">Rectable 1</div></ons-card>
+                            </div>
+                            <div class="gallery_item"> 
+                                <ons-card><div><img onclick="gotoVisaProcess()" class="gallery_image" src="./images/Rectangle 26.png"></div><div align="center" class="name_text">Rectable 1</div></ons-card>
+                            </div>
+                            <div class="gallery_item"> 
+                                <ons-card><div><img onclick="gotoVisaProcess()" class="gallery_image" src="./images/Rectangle 28.png"></div><div align="center" class="name_text">Rectable 1</div></ons-card>
+                            </div>
+
+                            <div class="gallery_item"> 
+                                <ons-card><div><img onclick="gotoVisaProcess()" class="gallery_image" src="./images/Rectangle 26.png"></div><div align="center" class="name_text">Rectable 1</div></ons-card>
+                            </div>
+                        </div>
+                    </ons-col>
+                </ons-row>
+            </ons-page>
+        </template>
+
+    
+        <template id="profile.html">
+            <ons-page id="profile">
+                <ons-toolbar>
+                    <div class="left"><ons-back-button></ons-back-button></div>
+                    <div class="center toolbar_text" > Profile </div>
+                    <div class="right">
+                    </div>
+                </ons-toolbar>
+
+                    <ons-row>
+                        <ons-col>
+                            <div class="text_wrapper">
+                                <div align="center">
+                                   UPDATE new Profile
+                                <div>    
+                            </div>
+                        </ons-col>
+                    </ons-row>
+                    <ons-row>
+                        <ons-col>
+                            <div class="form_section">
+                                <form id="paynow_form">
+                                    <ons-row>
+                                        <ons-col>
+                                            <div class="input-group" align="center">
+                                                <div class="label" >আপনার নাম</div>
+                                                <div class="">
+                                                    <input type="text" placeholder="Your name" id="your_name">
+                                                </div>
+                                            </div> 
+                                        </ons-col>
+                                    </ons-row> 
+                                    <ons-row>
+                                        <ons-col>
+                                            <div class="input-group" align="center">
+                                                <div class="label" >পিতার নাম</div>
+                                                <div class=""><input type="text" placeholder="Father's name" id="fathers_name"></div>
+                                            </div> 
+                                        </ons-col>
+                                    </ons-row> 
+                                    <ons-row>
+                                        <ons-col>
+                                            <div class="input-group" align="center">
+                                                <div class="label" >মাতার নাম</div>
+                                                <div class=""><input type="text" placeholder="Mother's name" id="mothers_name"></div>
+                                            </div> 
+                                        </ons-col>
+                                    </ons-row> 
+                                    <ons-row>
+                                        <ons-col>
+                                            <div class="input-group" align="center">
+                                                <div class="label" >ইমেইল</div>
+                                                <div class=""><input type="text" placeholder="Email addresss" id="email"></div>
+                                            </div> 
+                                        </ons-col>
+                                    </ons-row> 
+                                    <ons-row>
+                                        <ons-col>
+                                            <div class="input-group" align="center">
+                                                <div class="label" >মোবাইল নম্বর</div>
+                                                <div class=""><input type="number" placeholder="Mobile number" id="mobile_number"></div>
+                                            </div> 
+                                        </ons-col>
+                                    </ons-row> 
+                                    <ons-row>
+                                        <ons-col>
+                                            <div class="input-group" align="center">
+                                                <div class="label" >জাতীয় পরিচয়পত্র নম্বর</div>
+                                                <div class=""><input type="number" placeholder="National ID number" id="nid_number"></div>
+                                            </div> 
+                                        </ons-col>
+                                    </ons-row> 
+
+                                    <ons-row>
+                                        <ons-col>
+                                            <div class="input-group" align="center">
+                                                <div class="label" >পাসপোর্ট নম্বার</div>
+                                                <div class=""><input type="number" placeholder="National ID number" id="passport_number"></div>
+                                            </div> 
+                                        </ons-col>
+                                    </ons-row> 
+                                    <ons-row>
+                                        <ons-col>
+                                            <div class="input-group" align="center">
+                                                <div class="label" >বর্তমান ঠিকানা</div>
+                                                <div class=""><input type="text" placeholder="Present Address" id="present_address"></div>
+                                            </div> 
+                                        </ons-col>
+                                    </ons-row> 
+                                    <ons-row>
+                                        <ons-col>
+                                            <div class="input-group" align="center">
+                                                <div class="label" >স্থায়ী ঠিকানা</div>
+                                                <div class=""><input type="text" placeholder="Permanent Address" id="permanent_address"></div>
+                                            </div> 
+                                        </ons-col>
+                                    </ons-row> 
+                                    <ons-row>
+                                        <ons-col>
+                                            <div class="input-group" align="center">
+                                                <div class="label" >রক্তের গ্রুপ</div>
+                                                <div class=""><input type="text" placeholder="Blood Group" id="blood_group"></div>
+                                            </div> 
+                                        </ons-col>
+                                    </ons-row> 
+                                    <ons-row>
+                                        <ons-col>
+                                            <div class="input-group" align="center">
+                                                <div class="label" >শিক্ষাগত যোগ্যতা</div>
+                                                <div class=""><input type="text" placeholder="Educational qualification" id="education"></div>
+                                            </div> 
+                                        </ons-col>
+                                    </ons-row> 
+                                    <ons-row>
+                                        <ons-col>
+                                            <div class="input-group" align="center">
+                                                <div class="label" >পেশা</div>
+                                                <div class=""><input type="text" placeholder="Occupation" id="occupation"></div>
+                                            </div> 
+                                        </ons-col>
+                                    </ons-row> 
+                                    <ons-row>
+                                        <ons-col>
+                                            <div class="input-group" align="center">
+                                                <div class="label" >জরুরী কন্টাক্ট নম্বর</div>
+                                                <div class=""><input type="number" placeholder="Emergency contact number" id="emergency_contact"></div>
+                                            </div> 
+                                        </ons-col>
+                                    </ons-row>
+
+                                    <ons-row>
+                                        <ons-col>
+                                            <div class="input-group" align="center">
+                                                <div align="center">
+                                                    <button class="red_big_button" id="update_profile"> Update </button>
+                                                </div>
+                                            </div> 
+                                        </ons-col>
+                                    </ons-row>
+                                </form>  
+                            </div>    
+                        </ons-col>
+                    </ons-row>
+                </ons-page>
+            </ons-page>
+        </template>    
+
+        <template id="history.html">
+            <ons-page id="history">
+                <div style="padding: 20px;">
+                    <ons-row>
+                        <ons-col>
+                            <div class="left_tab half_tab_active">
+                                Visa History
+                            </div>
+                        </ons-col>
+                        <ons-col>
+                            <div class="right_tab half_tab_inactive ">
+                                Tour History
+                            </div>
+                        </ons-col>
+                    </ons-row>
+                <div>
+            </ons-page>
+        </template>    
+
+
+        <template id="visa_process.html">
+            <ons-page id="visa_process">
+                <ons-toolbar>
+                    <div class="left"><ons-back-button></ons-back-button></div>
+                    <div class="center toolbar_text" > Visa Process </div>
+                    <div class="right">
+                    </div>
+                </ons-toolbar>
+                    <ons-row>
+                        <ons-col>
+                            <div class="text_wrapper">
+                                <h2>USA Tourist Visa (B1/B2)</h2>
+                                <p>
+                                    The speaker unit contains a diaphragm that is precision-grown from NAC Audio bio-cellulose, making it stiffer, lighter and stronger than regular PET speaker units, and allowing the sound-producing diaphragm to vibrate without the levels of distortion found in other speakers. 
+                                </p> 
+                                <p>
+                                    The speaker unit contains a diaphragm that is precision-grown from NAC Audio bio-cellulose, making it stiffer, lighter and stronger than regular PET speaker units, and allowing the sound-producing diaphragm to vibrate without the levels of distortion found in other speakers.
+                                    <ul>
+                                        <li>Passport No.</li> 
+                                        <li> NID No.</li> 
+                                        <li>  Name</li> 
+                                        <li> Father’s Name</li> 
+                                        <li>  Mother’s Name</li> 
+                                        <li> Blood Gropu</li> 
+                                        <li> Profession</li> 
+                                        <li>  Mobile Number|Presenaddress</li> 
+                                        <li>  Parmanent Address</li>  
+                                    </ul>
+                                
+                                </p>     
+                            </div>
+                        </ons-col>
+                    </ons-row>
+                    <ons-row>
+                        <ons-col>
+                            <div align="center">
+                                <button class="red_big_button" onclick="gotoPayNow()"> Apply for Visa </button>
+                            </div>
+                        </ons-col>
+                    </ons-row>
+                </ons-page>
+            </ons-page>
+        </template>
+
+
+        <template id="tour_section.html">
+            <ons-page id="tour_section">
+
+                <ons-toolbar>
+                    <div class="left"><ons-back-button></ons-back-button></div>
+                    <div class="center toolbar_text" > Tour </div>
+                    <div class="right">
+                  </div>
+                </ons-toolbar>
+
+                <ons-row >
+                    <ons-col>
+                        <div align="center" class="gallery_container">
+                            <div class="gallery_item"> 
+                                 <ons-card><div><img onclick="gotoTourProcess()()" class="gallery_image" src="./images/Rectangle 26.png"></div><div align="center">Rectable 1</div></ons-card>
+                            </div>
+
+                            <div class="gallery_item"> 
+                                <ons-card><div><img onclick="gotoTourProcess()()" class="gallery_image" src="./images/Rectangle 24.png"></div><div align="center">Rectable 1</div></ons-card>
+                           </div>
+
+                            <div class="gallery_item"> 
+                                <ons-card><div><img onclick="gotoTourProcess()()" class="gallery_image" src="./images/Rectangle 26.png"></div><div align="center">Rectable 1</div></ons-card>
+                            </div>
+
+                            <div class="gallery_item"> 
+                                <ons-card><div><img onclick="gotoTourProcess()()" class="gallery_image" src="./images/Rectangle 28.png"></div><div align="center">Rectable 1</div></ons-card>
+                            </div>
+
+                            <div class="gallery_item"> 
+                                    <ons-card><div><img onclick="gotoTourProcess()()" class="gallery_image" src="./images/Rectangle 26.png"></div><div align="center">Rectable 1</div></ons-card>
+                            </div>
+                            <div class="gallery_item"> 
+                                <ons-card><div><img onclick="gotoTourProcess()()" class="gallery_image" src="./images/Rectangle 24.png"></div><div align="center">Rectable 1</div></ons-card>
+                            </div>
+                            <div class="gallery_item"> 
+                                <ons-card><div><img onclick="gotoTourProcess()()" class="gallery_image" src="./images/Rectangle 26.png"></div><div align="center">Rectable 1</div></ons-card>
+                            </div>
+                            <div class="gallery_item"> 
+                                <ons-card><div><img onclick="gotoTourProcess()()" class="gallery_image" src="./images/Rectangle 28.png"></div><div align="center">Rectable 1</div></ons-card>
+                            </div>
+
+                            <div class="gallery_item"> 
+                                <ons-card><div><img onclick="gotoTourProcess()()" class="gallery_image" src="./images/Rectangle 26.png"></div><div align="center">Rectable 1</div></ons-card>
+                            </div>
+                        </div>
+                    </ons-col>
+                </ons-row>
+            </ons-page>
+        </template>
+
+        <template id="tour_process.html">
+            <ons-page id="tour_process">
+                <ons-toolbar>
+                    <div class="left"><ons-back-button></ons-back-button></div>
+                    <div class="center toolbar_text" > Tour Process </div>
+                    <div class="right">
+                    </div>
+                </ons-toolbar>
+                    <ons-row>
+                        <ons-col>
+                            <div class="text_wrapper">
+                                <h2>USA Tour Fair</h2>
+                                <p>
+                                    The speaker unit contains a diaphragm that is precision-grown from NAC Audio bio-cellulose, making it stiffer, lighter and stronger than regular PET speaker units, and allowing the sound-producing diaphragm to vibrate without the levels of distortion found in other speakers.  
+                                </p> 
+                                <p>
+                                    The speaker unit contains a diaphragm that is precision-grown from NAC Audio bio-cellulose, making it stiffer, lighter and stronger than regular PET speaker units, and allowing the sound-producing diaphragm to vibrate without the levels of distortion found in other speakers.
+                                    <ul>
+                                        <li>Passport No.</li> 
+                                        <li> NID No.</li> 
+                                        <li>  Name</li> 
+                                        <li> Father’s Name</li> 
+                                        <li>  Mother’s Name</li> 
+                                        <li> Blood Gropu</li> 
+                                        <li> Profession</li> 
+                                        <li>  Mobile Number|Presenaddress</li> 
+                                        <li>  Parmanent Address</li>  
+                                    </ul>
+                                
+                                </p>     
+                            </div>
+                        </ons-col>
+                    </ons-row>
+                    <ons-row>
+                        <ons-col>
+                            <div align="center">
+                                <button class="red_big_button" onclick="gotoPayNow()"> Apply now with $20 </button>
+                            </div>
+                        </ons-col>
+                    </ons-row>
+                </ons-page>
+            </ons-page>
+        </template>
+
+        
+        
+        <template id="pay_now_visa.html">
+            <ons-page id="pay_now_visa">
+                <ons-toolbar>
+                    <div class="left"><ons-back-button></ons-back-button></div>
+                    <div class="center toolbar_text" > Submit Information </div>
+                    <div class="right">
+                    </div>
+                </ons-toolbar>
+                    <ons-row>
+                        <ons-col>
+                            <div class="text_wrapper">
+                                <div align="center">
+                                    <h2>USA Tourist Visa (B1/B2) <br/>
+                                    Payable Amount: 20,000 BDT</h2>
+                                <div>    
+                                <div class="instruction_text" align="center">
+                                    ** If you want, you can edit auto fill information
+                                </div> 
+                               
+                            </div>
+                        </ons-col>
+                    </ons-row>
+                    <ons-row>
+                        <ons-col>
+                            <div class="form_section">
+                                <form id="paynow_form">
+                                    <ons-row>
+                                        <ons-col>
+                                            <div class="input-group" align="center">
+                                                <div class="label" >আপনার নাম</div>
+                                                <div class="">
+                                                    <input type="text" placeholder="Your name" id="your_name">
+                                                </div>
+                                            </div> 
+                                        </ons-col>
+                                    </ons-row> 
+                                    <ons-row>
+                                        <ons-col>
+                                            <div class="input-group" align="center">
+                                                <div class="label" >পিতার নাম</div>
+                                                <div class=""><input type="text" placeholder="Father's name" id="fathers_name"></div>
+                                            </div> 
+                                        </ons-col>
+                                    </ons-row> 
+                                    <ons-row>
+                                        <ons-col>
+                                            <div class="input-group" align="center">
+                                                <div class="label" >মাতার নাম</div>
+                                                <div class=""><input type="text" placeholder="Mother's name" id="mothers_name"></div>
+                                            </div> 
+                                        </ons-col>
+                                    </ons-row> 
+                                    <ons-row>
+                                        <ons-col>
+                                            <div class="input-group" align="center">
+                                                <div class="label" >ইমেইল</div>
+                                                <div class=""><input type="text" placeholder="Email addresss" id="email"></div>
+                                            </div> 
+                                        </ons-col>
+                                    </ons-row> 
+                                    <ons-row>
+                                        <ons-col>
+                                            <div class="input-group" align="center">
+                                                <div class="label" >মোবাইল নম্বর</div>
+                                                <div class=""><input type="number" placeholder="Mobile number" id="mobile_number"></div>
+                                            </div> 
+                                        </ons-col>
+                                    </ons-row> 
+                                    <ons-row>
+                                        <ons-col>
+                                            <div class="input-group" align="center">
+                                                <div class="label" >জাতীয় পরিচয়পত্র নম্বর</div>
+                                                <div class=""><input type="number" placeholder="National ID number" id="nid_number"></div>
+                                            </div> 
+                                        </ons-col>
+                                    </ons-row> 
+
+                                    <ons-row>
+                                        <ons-col>
+                                            <div class="input-group" align="center">
+                                                <div class="label" >পাসপোর্ট নম্বার</div>
+                                                <div class=""><input type="number" placeholder="National ID number" id="passport_number"></div>
+                                            </div> 
+                                        </ons-col>
+                                    </ons-row> 
+                                    <ons-row>
+                                        <ons-col>
+                                            <div class="input-group" align="center">
+                                                <div class="label" >বর্তমান ঠিকানা</div>
+                                                <div class=""><input type="text" placeholder="Present Address" id="present_address"></div>
+                                            </div> 
+                                        </ons-col>
+                                    </ons-row> 
+                                    <ons-row>
+                                        <ons-col>
+                                            <div class="input-group" align="center">
+                                                <div class="label" >স্থায়ী ঠিকানা</div>
+                                                <div class=""><input type="text" placeholder="Permanent Address" id="permanent_address"></div>
+                                            </div> 
+                                        </ons-col>
+                                    </ons-row> 
+                                    <ons-row>
+                                        <ons-col>
+                                            <div class="input-group" align="center">
+                                                <div class="label" >রক্তের গ্রুপ</div>
+                                                <div class=""><input type="text" placeholder="Blood Group" id="blood_group"></div>
+                                            </div> 
+                                        </ons-col>
+                                    </ons-row> 
+                                    <ons-row>
+                                        <ons-col>
+                                            <div class="input-group" align="center">
+                                                <div class="label" >শিক্ষাগত যোগ্যতা</div>
+                                                <div class=""><input type="text" placeholder="Educational qualification" id="education"></div>
+                                            </div> 
+                                        </ons-col>
+                                    </ons-row> 
+                                    <ons-row>
+                                        <ons-col>
+                                            <div class="input-group" align="center">
+                                                <div class="label" >পেশা</div>
+                                                <div class=""><input type="text" placeholder="Occupation" id="occupation"></div>
+                                            </div> 
+                                        </ons-col>
+                                    </ons-row> 
+                                    <ons-row>
+                                        <ons-col>
+                                            <div class="input-group" align="center">
+                                                <div class="label" >জরুরী কন্টাক্ট নম্বর</div>
+                                                <div class=""><input type="number" placeholder="Emergency contact number" id="emergency_contact"></div>
+                                            </div> 
+                                        </ons-col>
+                                    </ons-row>
+
+                                    <ons-row>
+                                        <ons-col>
+                                            <div class="input-group" align="center">
+                                                <div align="center">
+                                                    <button class="red_big_button" onclick="gotoPayNow()"> Pay Now </button>
+                                                </div>
+                                            </div> 
+                                        </ons-col>
+                                    </ons-row>
+                                </form>  
+                            </div>    
+                        </ons-col>
+                    </ons-row>
+                </ons-page>
+            </ons-page>
+        </template>    
+
+
+        <template id="pay_now_tour.html">
+            <ons-page id="pay_now_tour">
+                <ons-toolbar>
+                    <div class="left"><ons-back-button></ons-back-button></div>
+                    <div class="center toolbar_text" > USA Tour Fair</div>
+                    <div class="right">
+                    </div>
+                </ons-toolbar>
+                    <ons-row>
+                        <ons-col>
+                            <div class="text_wrapper">
+                                <div align="center">
+                                    <h2>Pay $20 for Apply Tour Fair</h2>
+                                <div>    
+                                <div class="instruction_text" align="center">
+                                    ** If you want, you can edit auto fill information
+                                </div> 
+                               
+                            </div>
+                        </ons-col>
+                    </ons-row>
+                    <ons-row>
+                        <ons-col>
+                            <div class="form_section">
+                                <form id="paynow_form">
+                                    <ons-row>
+                                        <ons-col>
+                                            <div class="input-group" align="center">
+                                                <div class="label" >আপনার নাম</div>
+                                                <div class=""><input type="text" placeholder="Your name"></div>
+                                            </div> 
+                                        </ons-col>
+                                    </ons-row> 
+                                    <ons-row>
+                                        <ons-col>
+                                            <div class="input-group" align="center">
+                                                <div class="label" >পিতার নাম</div>
+                                                <div class=""><input type="text" placeholder="Father's name"></div>
+                                            </div> 
+                                        </ons-col>
+                                    </ons-row> 
+                                    <ons-row>
+                                        <ons-col>
+                                            <div class="input-group" align="center">
+                                                <div class="label" >মাতার নাম</div>
+                                                <div class=""><input type="text" placeholder="Mother's name"></div>
+                                            </div> 
+                                        </ons-col>
+                                    </ons-row> 
+                                    <ons-row>
+                                        <ons-col>
+                                            <div class="input-group" align="center">
+                                                <div class="label" >ইমেইল</div>
+                                                <div class=""><input type="text" placeholder="Email addresss"></div>
+                                            </div> 
+                                        </ons-col>
+                                    </ons-row> 
+                                    <ons-row>
+                                        <ons-col>
+                                            <div class="input-group" align="center">
+                                                <div class="label" >মোবাইল নম্বর</div>
+                                                <div class=""><input type="number" placeholder="Mobile number"></div>
+                                            </div> 
+                                        </ons-col>
+                                    </ons-row> 
+                                    <ons-row>
+                                        <ons-col>
+                                            <div class="input-group" align="center">
+                                                <div class="label" >জাতীয় পরিচয়পত্র নম্বর</div>
+                                                <div class=""><input type="number" placeholder="National ID number"></div>
+                                            </div> 
+                                        </ons-col>
+                                    </ons-row> 
+                                    <ons-row>
+                                        <ons-col>
+                                            <div class="input-group" align="center">
+                                                <div class="label" >বর্তমান ঠিকানা</div>
+                                                <div class=""><input type="text" placeholder="Present Address"></div>
+                                            </div> 
+                                        </ons-col>
+                                    </ons-row> 
+                                    <ons-row>
+                                        <ons-col>
+                                            <div class="input-group" align="center">
+                                                <div class="label" >স্থায়ী ঠিকানা</div>
+                                                <div class=""><input type="text" placeholder="Permanent Address"></div>
+                                            </div> 
+                                        </ons-col>
+                                    </ons-row> 
+                                    <ons-row>
+                                        <ons-col>
+                                            <div class="input-group" align="center">
+                                                <div class="label" >রক্তের গ্রুপ</div>
+                                                <div class=""><input type="text" placeholder="Blood Group"></div>
+                                            </div> 
+                                        </ons-col>
+                                    </ons-row> 
+                                    <ons-row>
+                                        <ons-col>
+                                            <div class="input-group" align="center">
+                                                <div class="label" >শিক্ষাগত যোগ্যতা</div>
+                                                <div class=""><input type="text" placeholder="Educational qualification"></div>
+                                            </div> 
+                                        </ons-col>
+                                    </ons-row> 
+                                    <ons-row>
+                                        <ons-col>
+                                            <div class="input-group" align="center">
+                                                <div class="label" >পেশা</div>
+                                                <div class=""><input type="text" placeholder="Occupation"></div>
+                                            </div> 
+                                        </ons-col>
+                                    </ons-row> 
+                                    <ons-row>
+                                        <ons-col>
+                                            <div class="input-group" align="center">
+                                                <div class="label" >জরুরী কন্টাক্ট নম্বর</div>
+                                                <div class=""><input type="number" placeholder="Emergency contact number"></div>
+                                            </div> 
+                                        </ons-col>
+                                    </ons-row>
+
+                                    <ons-row>
+                                        <ons-col>
+                                            <div class="input-group" align="center">
+                                                <div align="center">
+                                                    <button class="red_big_button" onclick="gotoPayNow()"> Pay Now </button>
+                                                </div>
+                                            </div> 
+                                        </ons-col>
+                                    </ons-row>
+                                </form>  
+                            </div>    
+                        </ons-col>
+                    </ons-row>
+                </ons-page>
+            </ons-page>
+        </template>    
+
+        
+        <template id="privacy.html">
+            <ons-page id="privacy">
+                <ons-toolbar>
+                    <div class="left"><ons-back-button></ons-back-button></div>
+                    <div class="center toolbar_text" > Privacy </div>
+                    <div class="right">
+                    </div>
+                </ons-toolbar>
+                    <ons-row>
+                        <ons-col>
+                            <div id="privacy_content">
+                                 Privacy   
+                            </div>
+                        </ons-col>
+                    </ons-row>
+            </ons-page>
+        </template>  
+
+        <template id="terms.html">
+            <ons-page id="terms">
+                <ons-toolbar>
+                    <div class="left"><ons-back-button></ons-back-button></div>
+                    <div class="center toolbar_text" > Terms </div>
+                    <div class="right">
+                    </div>
+                </ons-toolbar>
+                    <ons-row>
+                        <ons-col>
+                            <div id="privacy_content">
+                                 Terms   
+                            </div>
+                        </ons-col>
+                    </ons-row>
+            </ons-page>
+        </template>  
+
+        <template id="faq.html">
+            <ons-page id="faq">
+                <ons-toolbar>
+                    <div class="left"><ons-back-button></ons-back-button></div>
+                    <div class="center toolbar_text" > FAQ </div>
+                    <div class="right">
+                    </div>
+                </ons-toolbar>
+                    <ons-row>
+                        <ons-col>
+                            <div id="faq_content">
+                                FAQ  
+                            </div>
+                        </ons-col>
+                    </ons-row>
+            </ons-page>
+        </template> 
+
+        <template id="about.html">
+            <ons-page id="about">
+                <ons-toolbar>
+                    <div class="left"><ons-back-button></ons-back-button></div>
+                    <div class="center toolbar_text" > About </div>
+                    <div class="right">
+                    </div>
+                </ons-toolbar>
+                    <ons-row>
+                        <ons-col>
+                            <div id="about_content">
+                                About  
+                            </div>
+                        </ons-col>
+                    </ons-row>
+            </ons-page>
+        </template>
+        
+        
+        <template id="how_to_apply.html">
+            <ons-page id="how_to_apply">
+                <ons-toolbar>
+                    <div class="left"><ons-back-button></ons-back-button></div>
+                    <div class="center toolbar_text" > How to Apply </div>
+                    <div class="right">
+                    </div>
+                </ons-toolbar>
+                    <ons-row>
+                        <ons-col>
+                            <div id="howtoapply_content">
+                                How to Apply  
+                            </div>
+                        </ons-col>
+                    </ons-row>
+            </ons-page>
+        </template> 
+
+
+        <template id="dialog.html">
+            <ons-dialog id="my-dialog">
+              <div style="text-align: center; padding: 10px;">
+                <p>
+                  This is a simple dialog!
+                </p>
+          
+                <p>
+                  <ons-button onclick="hideDialog('my-dialog')">Close</ons-button>
+                </p>
+              </div>
+            </ons-dialog>
+          </template>
+
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="js/main_seciton.js"></script>
+        <script type="text/javascript" src="js/functions.js"></script>
+      
+    </body>
+</html>
